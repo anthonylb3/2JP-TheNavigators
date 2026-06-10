@@ -1,0 +1,635 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "maxResults": 50,
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -448,
+        640
+      ],
+      "id": "e4bbc4a9-cd3b-41d7-af15-10e12ee54ddb",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MZHx2tpdoTOERc9w",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "llama3.1:8b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        864
+      ],
+      "id": "db1c9878-c288-4689-9450-809685519dee",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "Jgz58e9XX3q2Bg7H",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "llama3.1:8b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        496,
+        864
+      ],
+      "id": "a028fdbe-8dda-4a9b-a64e-eccce4b66566",
+      "name": "Ollama Chat Model1",
+      "credentials": {
+        "ollamaApi": {
+          "id": "Jgz58e9XX3q2Bg7H",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "=Re: {{ $('Gmail Trigger').item.json.subject }}",
+        "message": "={{ $json.output }}",
+        "options": {
+          "threadId": "={{ $('Gmail Trigger').item.json.threadId }}"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        992,
+        640
+      ],
+      "id": "b42e6032-6b17-429e-a846-fd46689ac6a7",
+      "name": "Create a draft",
+      "webhookId": "e3c8621f-0d11-4fe6-a045-47a78aa64344",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MZHx2tpdoTOERc9w",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Bljr1utSzLdm4vlZxbAPZbeyJ5dWWXKFh00w_wNvIlw",
+          "mode": "list",
+          "cachedResultName": "n8n audit trial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Bljr1utSzLdm4vlZxbAPZbeyJ5dWWXKFh00w_wNvIlw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Bljr1utSzLdm4vlZxbAPZbeyJ5dWWXKFh00w_wNvIlw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ $now }}",
+            "Afzender": "={{ $('Gmail Trigger').item.json.From }}",
+            "Onderwerp": "={{ $('Gmail Trigger').item.json.Subject }}",
+            "Categorie": "={{ $('Code in JavaScript').item.json.category }}",
+            "Confidence": "={{ $('Code in JavaScript').item.json.confidence }}",
+            "Samenvatting": "={{ $('Code in JavaScript').item.json.summary}}",
+            "Voorgestelde actie": "={{ $('Code in JavaScript').item.json.suggested_action}}",
+            "Draft opgeslagen": "True"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Afzender",
+              "displayName": "Afzender",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Onderwerp",
+              "displayName": "Onderwerp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Categorie",
+              "displayName": "Categorie",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Confidence",
+              "displayName": "Confidence",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Samenvatting",
+              "displayName": "Samenvatting",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Voorgestelde actie",
+              "displayName": "Voorgestelde actie",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Draft opgeslagen",
+              "displayName": "Draft opgeslagen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1216,
+        640
+      ],
+      "id": "53666d4f-f264-4e60-8237-d087a6cad90a",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gesQ8aZGHaRLigHw",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Je bent een klantenservice medewerker van Stichting Navigators Nederland.\nJe schrijft een professioneel antwoord op een binnenkomende email.\n\nBegin de email ALTIJD met een beleefde aanhef zoals \"Beste [naam],\" of \"Geachte heer/mevrouw,\"\n\nEindig de email ALTIJD met exact deze afsluiting:\nMet vriendelijke groet,\nStichting Navigators Nederland\n\nSchrijf ALLEEN de emailtekst zelf, geen headers, geen \"Onderwerp:\", geen \"Antwoord:\".\nHoud het beknopt en vriendelijk.\n\nClassificatie: {{ $json.category }}\nSamenvatting: {{ $json.summary }}\nVoorgestelde actie: {{ $json.suggested_action }}\nOriginele email: {{ $('Gmail Trigger').item.json.snippet }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        528,
+        640
+      ],
+      "id": "c68108b6-4a14-415e-a0d5-634231e1b566",
+      "name": "AI Agent 2 - draft maken"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Je bent een email classificatie assistent. \nAnalyseer de binnenkomende email en geef een JSON response met:\n- category: (complaint / invoice / partnership_request / support / other)\n- confidence: (0-100)\n- summary: (1-5 zin samenvatting)\n- suggested_action: (wat er mee gedaan moet worden)\n\nReageer ALLEEN met JSON, geen extra tekst.\n\nEmail onderwerp: {{ $json.Subject }}\nEmail inhoud: {{ $json.snippet }}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -192,
+        640
+      ],
+      "id": "8052fce0-b47d-44d0-8041-4634b8c6583b",
+      "name": "AI Agent 1 - categorie, confidence, samenvatting",
+      "notesInFlow": true,
+      "notes": "Deze agent leest de email, denkt analytisch na: wat voor mail is dit, en geeft de output: categorie, confidence, samenvatting"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -448,
+        112
+      ],
+      "id": "09fe351e-bc20-4d35-a556-8e51ac9651dc",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/Users/aize/.n8n-files/kennisbank.txt",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        -224,
+        112
+      ],
+      "id": "e7e34134-33a0-40c7-9aee-b27a21807037",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "kennisbank",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0b3d45f9-2719-46e7-80f2-84c8a9a7c732",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "8az6uXYq3g54GMGZ",
+          "name": "Qdrant account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "nomic-embed-text:latest"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [
+        16,
+        224
+      ],
+      "id": "a3a2c36b-96e8-476d-a370-fe93e1e4213b",
+      "name": "Embeddings Ollama",
+      "credentials": {
+        "ollamaApi": {
+          "id": "Jgz58e9XX3q2Bg7H",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        144,
+        224
+      ],
+      "id": "90b0e5e2-d8bc-462c-a671-4f863df3aa80",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Gebruik deze tool om bedrijfsinformatie op te zoeken zoals openingstijden, contactgegevens, retourbeleid en leveringsinformatie. Raadpleeg deze tool altijd als de email vragen bevat over het bedrijf.",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "kennisbank",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [
+        -96,
+        864
+      ],
+      "id": "879ca73f-1bc9-4909-985a-6cb164e4c874",
+      "name": "Qdrant Vector Store1",
+      "credentials": {
+        "qdrantApi": {
+          "id": "8az6uXYq3g54GMGZ",
+          "name": "Qdrant account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "nomic-embed-text:latest"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        1072
+      ],
+      "id": "1f8467d2-76b6-444c-ae32-65b9f2916891",
+      "name": "Embeddings Ollama1",
+      "credentials": {
+        "ollamaApi": {
+          "id": "Jgz58e9XX3q2Bg7H",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $input.item.json.output;\nconst json = JSON.parse(text);\nreturn { json };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        272,
+        640
+      ],
+      "id": "7167ed35-08df-486f-9d37-3007906e0bc8",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Gebruik deze tool om bedrijfsinformatie op te zoeken zoals openingstijden, contactgegevens, retourbeleid en leveringsinformatie. Raadpleeg deze tool altijd als de email vragen bevat over het bedrijf.",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "kennisbank",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [
+        624,
+        864
+      ],
+      "id": "7db2f82c-143f-47d7-84ea-419fdd892bba",
+      "name": "Qdrant Vector Store2",
+      "credentials": {
+        "qdrantApi": {
+          "id": "8az6uXYq3g54GMGZ",
+          "name": "Qdrant account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "nomic-embed-text:latest"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [
+        704,
+        1072
+      ],
+      "id": "416b447a-bc91-4b11-8228-e3d7b88c37b8",
+      "name": "Embeddings Ollama2",
+      "credentials": {
+        "ollamaApi": {
+          "id": "Jgz58e9XX3q2Bg7H",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "account",
+        "operation": "get"
+      },
+      "type": "n8n-nodes-base.salesforce",
+      "typeVersion": 1.1,
+      "position": [
+        624,
+        320
+      ],
+      "id": "e5702a5b-4a86-4c30-93f7-fd4e9a1cec2f",
+      "name": "Get an account"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent 1 - categorie, confidence, samenvatting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent 1 - categorie, confidence, samenvatting",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent 2 - draft maken",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a draft": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent 2 - draft maken": {
+      "main": [
+        [
+          {
+            "node": "Create a draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent 1 - categorie, confidence, samenvatting": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Ollama": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent 1 - categorie, confidence, samenvatting",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Ollama1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "AI Agent 2 - draft maken",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Ollama2": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store2",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent 2 - draft maken",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "9273a277-31a6-4348-aecd-e06319047bb5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "1da87a3534283ea9442b848915d65114c1a20df285c72cf1fce5f1612049508f"
+  },
+  "nodeGroups": [],
+  "id": "Tqxzcwrw7yPYRq7Y",
+  "tags": []
+}
