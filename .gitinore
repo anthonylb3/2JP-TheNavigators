@@ -1,0 +1,7 @@
+# Data bestanden niet committen
+data/
+*.csv
+*.xlsx
+
+# n8n lokale bestanden
+.n8n/
