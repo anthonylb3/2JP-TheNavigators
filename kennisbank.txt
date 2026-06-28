@@ -1,0 +1,182 @@
+#CONTACT:
+
+## LOCATIE: Hoofdstraat 55, 3971 KB Driebergen
+## NUMMER: 0343 520104
+## MAIL: info@navigators.nl
+## REKENINGNUMMER: NL92 TRIO 0320 0101 12
+## KVK-NUMMER: 41178021
+## RSIN: 003002172
+
+## CONTACT PAGINA: https://navigators.nl/contact/
+## STICHTING INFORMATIE: https://navigators.nl/stichting/
+
+
+# ROUTEBESCHRIJVING
+
+## AUTO
+
+Kom je vanaf richting A12, neem de afslag Driebergen. Op de hoofdstraat zie je aan de linkerkant het terrein ‘Beukenhorst’ met borden waaronder die van Navigators. Volg deze borden. Kom je vanaf Doorn rijd dan naar Driebergen. Eenmaal op de Hoofdstraat ziet u na enige tijd aan de rechterkant het terrein waarop borden staan, waaronder die van Navigators. Volg deze borden.
+
+## OPENBAAR VERVOER
+
+Neem buslijn 50 of 71 en stap uit bij halte Beukenstein. Loop naar Hoofdstraat 51-55. Volg de borden naar het kantoor van Navigators.
+
+
+#OPENINGSTIJDEN:
+
+## MAANDAG: 9:00-18:00
+## DINSDAG: 9:00-18:00
+## WOENSDAG: 9:00-18:00
+## DONDERDAG: 9:00-18:00
+## VRIJDAG: 9:00-18:00
+## ZATERDAG: 9:00-18:00
+## ZONDAG: GESLOTEN
+
+
+#TEMPLATES:
+
+## TEMPLATE: start_gift | informeel
+
+ONDERWERP: Wat fijn dat je meedoet!
+
+Hoi {{voornaam}},
+
+Wat geweldig — je hebt je aangemeld als donateur met een gift van {{bedrag}} per {{frequentie}}. Daar zijn we echt blij mee!
+
+Met jouw steun kunnen we blijven doen wat we doen. Dat voelt niet als vanzelfsprekend, en daar zijn we je oprecht dankbaar voor.
+
+Heb je vragen of wil je iets weten over hoe jouw gift wordt ingezet? Je mag ons altijd bereiken via {{contactmailadres}}.
+
+Met hartelijke groet,
+
+{{naam}}
+{{organisatienaam}}
+
+---
+
+## TEMPLATE: verhoging_gift | informeel
+
+ONDERWERP: Dank je wel — wat een mooie stap!
+
+Hoi {{voornaam}},
+
+We hebben je wijziging ontvangen — je gift gaat omhoog naar {{nieuw_bedrag}} per {{frequentie}}. Wat mooi dat je nog een stap verder wil gaan!
+
+Jouw betrokkenheid betekent veel voor ons en voor het werk dat we samen mogen doen. Dank je wel.
+
+Met hartelijke groet,
+
+{{naam}}
+{{organisatienaam}}
+
+---
+
+## TEMPLATE: verlaging_gift | informeel
+
+ONDERWERP: Je wijziging is doorgevoerd
+
+Hoi {{voornaam}},
+
+Geen probleem — we hebben je gift aangepast naar {{nieuw_bedrag}} per {{frequentie}}. Dat is geregeld.
+
+We zijn gewoon blij dat je betrokken blijft, in welke vorm dan ook. Elke bijdrage telt en dat menen we echt.
+
+Heb je vragen? Je kunt ons altijd bereiken via {{contactmailadres}}.
+
+Met hartelijke groet,
+
+{{naam}}
+{{organisatienaam}}
+
+---
+
+## TEMPLATE: stopzetting_gift | informeel
+
+ONDERWERP: Je gift is stopgezet — bedankt voor alles
+
+Hoi {{voornaam}},
+
+We hebben je verzoek verwerkt — je periodieke gift is per {{einddatum}} stopgezet. Er wordt niets meer afgeschreven.
+
+We willen je oprecht bedanken voor alles wat je hebt bijgedragen. Jouw steun heeft echt iets betekend, en dat vergeten we niet.
+
+Mocht je ooit weer mee willen doen, of gewoon een vraag hebben — je bent altijd welkom via {{contactmailadres}}.
+
+Met hartelijke groet,
+
+{{naam}}
+{{organisatienaam}}
+
+---
+
+## TEMPLATE: start_gift | formeel
+
+ONDERWERP: Welkom als donateur — hartelijk dank
+
+Beste {{voornaam}} {{achternaam}},
+
+We hebben uw aanmelding als donateur ontvangen en willen u daar hartelijk voor bedanken. Met uw gift van {{bedrag}} per {{frequentie}} steunt u het werk dat wij met veel toewijding uitvoeren.
+
+Uw bijdrage is voor ons niet vanzelfsprekend. We zijn u oprecht dankbaar dat u dit mogelijk maakt.
+
+Mocht u vragen hebben over hoe uw gift wordt ingezet, dan kunt u ons bereiken via {{contactmailadres}}.
+
+Met hartelijke groet,
+
+{{naam}}
+{{organisatienaam}}
+
+---
+
+## TEMPLATE: verhoging_gift | formeel
+
+ONDERWERP: Bevestiging verhoging van uw gift — dank u wel
+
+Beste {{voornaam}} {{achternaam}},
+
+We hebben uw wijziging ontvangen en bevestigen dat uw periodieke gift is verhoogd naar {{nieuw_bedrag}} per {{frequentie}}.
+
+We zijn u zeer erkentelijk voor deze stap. Uw voortdurende betrokkenheid en het vertrouwen dat u in ons stelt, betekenen veel voor ons en voor het werk dat we mogen doen.
+
+Met hartelijke groet,
+
+{{naam}}
+{{organisatienaam}}
+
+---
+
+## TEMPLATE: verlaging_gift | formeel
+
+ONDERWERP: Bevestiging wijziging van uw gift
+
+Beste {{voornaam}} {{achternaam}},
+
+We bevestigen dat uw periodieke gift is aangepast naar {{nieuw_bedrag}} per {{frequentie}}. De wijziging is verwerkt.
+
+We stellen het zeer op prijs dat u ondanks de aanpassing betrokken blijft. Uw steun, in welke vorm dan ook, draagt bij aan wat wij samen mogen betekenen.
+
+Heeft u vragen? We zijn bereikbaar via {{contactmailadres}}.
+
+Met hartelijke groet,
+
+{{naam}}
+{{organisatienaam}}
+
+---
+
+## TEMPLATE: stopzetting_gift | formeel
+
+ONDERWERP: Bevestiging stopzetting van uw gift
+
+Beste {{voornaam}} {{achternaam}},
+
+We hebben uw verzoek ontvangen en bevestigen dat uw periodieke gift per {{einddatum}} is stopgezet. Er zullen geen verdere bedragen worden afgeschreven.
+
+We willen u oprecht bedanken voor alles wat u heeft bijgedragen. Uw steun heeft gedurende deze periode iets betekend dat wij niet licht opvatten.
+
+Mocht u in de toekomst opnieuw betrokken willen raken, of heeft u nog vragen, dan bent u altijd welkom via {{contactmailadres}}.
+
+Met hartelijke groet,
+
+{{naam}}
+{{organisatienaam}}
